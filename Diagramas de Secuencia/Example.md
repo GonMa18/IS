@@ -35,3 +35,34 @@ sequenceDiagram
     end
     deactivate BE
 ```
+```mermaid
+classDiagram
+    class SuperMarket {
+      <<Singleton>>
+      -mySM : SuperMarket
+      -registers : Collection~CashRegister~
+      +SuperMarket()
+      +getSuperMarket() SuperMarket
+      +getIterator() Iterator~CashRegister~
+      +update() void
+    }
+
+    class CashRegister {
+      -id : Str
+      -sales : Collection~Sale~
+      +CashRegister(...)
+      +getIterator() Iterator~Sale~
+      +update() void
+    }
+
+    class Sale {
+      -artCode : Str
+      -number : int
+      +Sale(...)
+      +update() void
+    }
+
+    %% Relaciones
+    SuperMarket ..> CashRegister : <<uses>>
+    CashRegister ..> Sale : <<uses>>
+```
