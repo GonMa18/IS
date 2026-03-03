@@ -1,13 +1,22 @@
-"""mermaid
+```mermaid
 sequenceDiagram
+    autonumber
+    actor U as User
+    participant FE as Front End
+    participant BE as Back End
+    participant DB as Base de datos
 
-actor U as User
+    U->>FE: Envío de datos
+    FE->>BE: Validación de datos
+    BE->>DB: Verifique la existencia
+    DB-->>BE: Datos correctos
 
-participant F as Front
-participant B as Back End
-participant DB as Base de Datos
+    alt Error en la validación
+        BE-->>FE: Error en la validación
+        FE-->>U: Mostrar error
+    else OK
+        BE-->>FE: OK
+        FE-->>U: Continuar
+    end
 
-U ->> F : Envio de datos
-F ->> B : Validación de datos
-B ->> DB : Verifique la existencia
-"""
+```
