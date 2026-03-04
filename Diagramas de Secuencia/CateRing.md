@@ -27,7 +27,7 @@ loop while hasNext()
         Pl->>Pl: getIterator():Iterator~Ingrediente~
         loop while hasNext()
           Pl->>I: eliminarIngrediente(Integer numPlatos) : bool
-          I-->>A: eliminarIngrediente(Integer numPlatos, String nombreI, Integer cantidad)
+          I->>A: eliminarIngrediente(Integer numPlatos, String nombreI, Integer cantidad)
           A->>A: getIterator():Iterator~Ingredientes~
           loop while hasNext() && !encontrado
             A->>I: eliminarIngrediente(String nombreI, Integer cantidad, Integer numPlatos) : bool
